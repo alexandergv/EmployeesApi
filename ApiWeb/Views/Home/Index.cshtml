@@ -1,0 +1,71 @@
+﻿@model ApiWeb.Models.Empleados
+
+<!DOCTYPE html>
+
+<html>
+<head >
+   
+</head>
+<body>
+
+    @using (Html.BeginForm("Index","Home",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <form>
+
+                @Html.ValidationSummary(true)
+                <div class="form-group row">
+
+                    <label for="Nombre" class="col-sm-1 ">Nombre:</label>
+                    <div class="col-sm-0">
+                        @Html.EditorFor(Model => Model.NombreEmpleado)
+                        @Html.ValidationMessageFor(Model => Model.NombreEmpleado)
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <label for="Apellido" class="col-sm-1">Apellido:</label>
+                    <div class="col-sm-0">
+                        @Html.EditorFor(Model => Model.ApellidoEmpleado)
+                        @Html.ValidationMessageFor(Model => Model.ApellidoEmpleado)
+
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="Email" class="col-sm-1">Correo electronico:</label>
+                    <div class="col-sm-S">
+                        @Html.EditorFor(Model => Model.MailID)
+                        @Html.ValidationMessageFor(Model => Model.MailID)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Departamento" class="col-sm-10">Departamento:</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(Model => Model.Departamento,
+                        new SelectList(ViewBag.Departamentos, "Text", "Value"),"--Seleccionar--"
+                        )
+                        @Html.ValidationMessageFor(Model => Model.Departamento)
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Añadir" class="btn btn-primary" />
+                </div>
+            </form>
+
+
+
+        </div>
+    }
+    <script type="text/javascript">
+    </script>
+    
+    <script src='@Url.Content("~/Scripts/jquery-3.3.1.js")' type='text/javascript'></script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.js")' type='text/javascript'></script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")' type='text/javascript'></script>
+</body>
+</html>
