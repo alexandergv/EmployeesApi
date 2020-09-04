@@ -98,13 +98,14 @@ namespace ApiWeb.Controllers
                     comando.CommandType = CommandType.Text;
                     ad.Fill(table);
                 }
-
             }
             catch (Exception)
             {
                 ViewBag.error = "error";
  
             };
+
+            ModelState.Clear();
 
             return View();
         }

@@ -16,7 +16,6 @@ namespace ApiWeb.Controllers
             DataTable dt = new DataTable();
             dt.Columns.Add("DepID");
             dt.Columns.Add("DepNombre");
-
             dt.Rows.Add(1, "QA");
             dt.Rows.Add(2, "Support");
 
