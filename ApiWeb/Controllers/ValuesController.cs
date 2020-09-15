@@ -11,16 +11,9 @@ namespace ApiWeb.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public HttpResponseMessage  Get()
+        public string  Get()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("DepID");
-            dt.Columns.Add("DepNombre");
-            dt.Rows.Add(1, "QA");
-            dt.Rows.Add(2, "Support");
-
-           
-            return Request.CreateResponse(HttpStatusCode.OK,dt);
+            return "value";
         }
 
         // GET api/values/5

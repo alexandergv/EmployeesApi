@@ -13,12 +13,12 @@ using System.Configuration;
 using ApiWeb.Controllers;
 using System.Web.Mvc;
 
-namespace ApiWeb.Controllers
+namespace ApiWeb.Controllers    
 {
-    public class EmpleadosController : ApiController
+    public class EmpleadosController : Controller
     {
 
-        public HttpResponseMessage Get()
+        public ActionResult Index()
         {
             DataTable table = new DataTable();
 
@@ -28,12 +28,21 @@ namespace ApiWeb.Controllers
             using (var conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["AppEmpleadosBD"].ConnectionString))
             using (var comando = new SqlCommand(consulta, conexion))
             using (var ad = new SqlDataAdapter(comando))
-            {
-                comando.CommandType = CommandType.Text;
+
                 ad.Fill(table);
+
+            List<SelectListItem> empleadoList = new List<SelectListItem>();
+
+            foreach(System.Data.DataRow dataRow in table.Rows)
+            {
+                empleadoList.Add(new SelectListItem { Text = dataRow["IdEmpleado"].ToString(), Value =dataRow["IdEmpleado"].ToString() });
             }
-            return Request.CreateResponse(HttpStatusCode.OK, table);
+
+            ViewBag.Empleados = table;
+
+
             
+            return View();
         
         }
 

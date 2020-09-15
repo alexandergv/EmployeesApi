@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+
+<h3>Lista de Empleados</h3>
+<hr/>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Departamento</th>
+            <th scope="col"> Correo electronico</th>
+        </tr>
+    </thead>
+
+    @{
+
+        foreach (System.Data.DataRow dataRow in ViewBag.Empleados.Rows)
+        {
+        <tr>
+            
+                <th scope="row">
+                    @dataRow["IdEmpleado"].ToString()
+                </th>
+            
+
+            <td  >
+                @dataRow["NombreEmpleado"].ToString()
+            </td>
+
+            <td >
+                @dataRow["ApellidoEmpleado"].ToString()
+            </td>
+
+            <td >
+                @dataRow["Departamento"].ToString()
+            </td>
+
+            <td  >
+                @dataRow["MailID"].ToString()
+            </td>
+        </tr>
+        }
+
+
+    }
+
+</table>
+@ViewBag.Empleados
+
+<script>
+
+</script>
+

@@ -49,8 +49,10 @@ namespace ApiWeb.Controllers
         [HttpPost]
         public ActionResult Index(Empleados emp)
         {
+           
             ViewBag.Title = "Directorio";
-            //Proceso de la base de datos
+
+            // //DropdownListFor
             string mainConn = ConfigurationManager.ConnectionStrings["AppEmpleadosBD"].ConnectionString;
             SqlConnection connection = new SqlConnection(mainConn);
             string sqlquery = "select Nombredepartamento from dbo.Departamentos";
